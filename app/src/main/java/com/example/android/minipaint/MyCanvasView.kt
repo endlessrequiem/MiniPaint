@@ -40,6 +40,10 @@ class MyCanvasView(context: Context) : View(context){
 
     private  lateinit var frame: Rect
 
+    //private val drawing = Path()
+    //private val curPath = Path()
+
+
     override fun onSizeChanged(width: Int, Weight: Int, oldWidth: Int, oldHeight: Int) {
         super.onSizeChanged(width, height, oldWidth, oldHeight)
         if (::extraBitmap.isInitialized) extraBitmap.recycle()
@@ -55,6 +59,9 @@ class MyCanvasView(context: Context) : View(context){
         super.onDraw(canvas)
         canvas.drawBitmap(extraBitmap, 0f, 0f, null)
         canvas.drawRect(frame, paint)
+
+        //canvas.drawPath(drawing, paint)
+        //canvas.drawPath(curPath, paint)
     }
 
     private fun touchStart() {
@@ -79,6 +86,9 @@ class MyCanvasView(context: Context) : View(context){
     }
 
     private fun touchUp() {
+        //drawing.addPath(curPath)
+        //curPath.reset()
+
         path.reset()
     }
 
