@@ -3,8 +3,11 @@ package com.example.android.minipaint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Paint
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
+
+private const val STROKE_Width = 12f
 
 class MyCanvasView(context: Context) : View(context){
 
@@ -12,6 +15,18 @@ class MyCanvasView(context: Context) : View(context){
     private lateinit var extraBitmap: Bitmap
 
     private val backgroundColor = ResourcesCompat.getColor(resources, R.color.colorBackground, null)
+
+    private val drawColor = ResourcesCompat.getColor(resources, R.color.colorPaint, null)
+
+    private val paint = Paint().apply {
+        color = drawColor
+        isAntiAlias = true
+        isDither = true
+        style = Paint.Style.STROKE
+        strokeJoin = Paint.Join.ROUND
+        strokeCap = Paint.Cap.ROUND
+        strokeWidth = STROKE_Width
+    }
 
     override fun onSizeChanged(width: Int, Weight: Int, oldWidth: Int, oldHeight: Int) {
         super.onSizeChanged(width, height, oldWidth, oldHeight)
